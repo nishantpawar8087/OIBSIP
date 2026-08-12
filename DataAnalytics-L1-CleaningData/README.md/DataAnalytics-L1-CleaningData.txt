@@ -1,0 +1,320 @@
+# Task 3 – Cleaning Data
+
+## Oasis Infobyte Data Analytics Internship
+
+### Project Overview
+
+This project focuses on cleaning and preparing a deliberately messy Titanic dataset for further analysis.
+
+The objective is to identify common data quality problems such as missing values, duplicate records, inconsistent categorical values, outliers, and incorrect data types, and then apply appropriate data-cleaning techniques.
+
+The final result is an analysis-ready dataset saved as a separate CSV file.
+
+---
+
+## Objective
+
+The main objectives of this project are:
+
+- Identify missing values
+- Detect and remove duplicate records
+- Standardize inconsistent categorical values
+- Detect numerical outliers
+- Handle outliers using the IQR method
+- Correct inappropriate data types
+- Compare the dataset before and after cleaning
+- Generate a final cleaned dataset
+- Document all cleaning decisions
+
+---
+
+## Dataset
+
+### Dataset Name
+
+**Titanic Dataset**
+
+### Original File
+
+`Titanic-Dataset.csv`
+
+### Working Messy Dataset
+
+`messy_titanic.csv`
+
+### Final Cleaned Dataset
+
+`cleaned_titanic.csv`
+
+The Titanic dataset contains passenger information including passenger ID, survival status, passenger class, name, gender, age, number of siblings/spouses, number of parents/children, ticket, fare and other passenger information.
+
+---
+
+## Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
+- Anaconda
+- GitHub
+
+---
+
+# Data Cleaning Process
+
+## 1. Initial Dataset Inspection
+
+The dataset was first loaded using Pandas and inspected using:
+
+- `head()`
+- `shape`
+- `columns`
+- `info()`
+- `describe()`
+- Missing-value analysis
+- Duplicate-value analysis
+
+### Initial Dataset Size
+
+- Rows: ** 891**
+Columns: **12**
+
+---
+
+## 2. Data Quality Report
+
+A data quality report was created to identify:
+
+- Column names
+- Data types
+- Missing values
+- Missing-value percentage
+- Number of unique values
+
+This helped identify the major data-quality issues that needed to be addressed.
+
+---
+
+## 3. Deliberately Messy Data
+
+To demonstrate the complete data-cleaning process, a copy of the original dataset was intentionally modified.
+
+The following problems were introduced:
+
+- Missing Age values
+- Missing Fare values
+- Duplicate records
+- Inconsistent gender values such as `M`, `MALE`, `F`, and `FEMALE`
+- An extreme Fare value
+
+The modified dataset was saved as:
+
+`messy_titanic.csv`
+
+---
+
+# 4. Missing Value Handling
+
+## Age
+
+Missing values in the `Age` column were replaced using the median age.
+
+### Reason
+
+Median imputation was selected because Age is numerical and the median is less affected by extreme values than the mean.
+
+- Missing Age values before cleaning: **10**
+- Missing Age values after cleaning: **0**
+
+---
+
+## Fare
+
+Missing values in the `Fare` column were replaced using the median Fare.
+
+### Reason
+
+Median imputation was selected because Fare is numerical and may contain extreme values.
+
+- Missing Fare values before cleaning: **5**
+- Missing Fare values after cleaning: **0**
+
+---
+
+## Cabin
+
+The `Cabin` column was removed because it contained a large proportion of missing values and was not required for this cleaning demonstration.
+
+---
+
+# 5. Duplicate Removal
+
+Duplicate records were identified using Pandas `duplicated()`.
+
+### Results
+
+- Duplicate rows before cleaning: **5**
+- Duplicate rows after cleaning: **0**
+- Duplicate rows removed: **5**
+
+The duplicate records were removed using:
+
+`drop_duplicates()`
+
+---
+
+# 6. Data Standardization
+
+The `Sex` column contained inconsistent categorical values.
+
+### Before Standardization
+
+Examples included:
+
+- `male`
+- `MALE`
+- `M`
+- `female`
+- `FEMALE`
+- `F`
+
+### After Standardization
+
+The values were converted into:
+
+- `Male`
+- `Female`
+
+This improves consistency and makes the categorical data easier to analyze.
+
+---
+
+# 7. Outlier Detection
+
+The Interquartile Range (IQR) method was used to identify outliers in the `Fare` column.
+
+### IQR Formula
+
+```text
+IQR = Q3 - Q1
+
+Lower Bound = Q1 - 1.5 × IQR
+
+Upper Bound = Q3 + 1.5 × IQR
+
+Outlier Results
+Number of Fare outliers detected: 0
+Lower IQR boundary: -26.687499999999996
+Upper IQR boundary: 65.6125
+A boxplot was also created to visually identify extreme values.
+
+8. Outlier Handling
+Instead of deleting complete passenger records, extreme Fare values were capped using the calculated IQR boundaries.
+Reason
+Capping preserves the passenger records while reducing the influence of extreme numerical values.
+
+9. Data Type Correction
+The following columns were checked and corrected where required:
+PassengerId
+Survived
+Pclass
+Age
+Fare
+Numeric columns were converted using appropriate Pandas data-type conversion methods.
+
+10. Before vs After Cleaning
+
+
+11. Final Data Quality
+After cleaning, the dataset was checked again for:
+Missing values
+Duplicate rows
+Data types
+Invalid values
+Outliers
+Dataset structure
+Final Dataset
+Final rows: 891
+Final columns: 11
+Remaining duplicate rows: 0
+Remaining critical missing values: 0
+The cleaned dataset was saved as:
+cleaned_titanic.csv
+
+12. Files Included
+
+DataAnalytics-L1-CleaningData/
+│
+├── data/
+│   ├── Titanic-Dataset.csv
+│   ├── messy_titanic.csv
+│   └── cleaned_titanic.csv
+│
+├── screenshots/
+│   ├── 01_initial_data.png
+│   ├── 02_data_quality_report.png
+│   ├── 03_missing_values.png
+│   ├── 04_duplicates.png
+│   ├── 05_outliers.png
+│   ├── 06_before_after.png
+│   └── 07_cleaned_data.png
+│
+├── Task3_Cleaning_Data.ipynb
+└── README.md
+
+
+13. Key Findings
+The data-cleaning process identified several common data-quality issues.
+Major Findings
+Missing values were identified and handled using median imputation.
+Duplicate records were detected and removed.
+Inconsistent gender values were standardized.
+Extreme Fare values were detected using the IQR method.
+Fare outliers were capped rather than deleting complete records.
+Incorrect data types were corrected.
+A before-and-after comparison was created to measure the improvement in data quality.
+
+14. Cleaning Summary
+
+
+15. Conclusion
+The Titanic dataset was successfully cleaned and transformed into an analysis-ready dataset.
+The project demonstrated a complete data-cleaning workflow, including data-quality assessment, missing-value handling, duplicate removal, categorical standardization, outlier detection and handling, data-type correction, and before-and-after comparison.
+The final cleaned dataset was exported as cleaned_titanic.csv and can now be used for further exploratory analysis or machine-learning applications.
+
+Author
+Nishant Pawar
+Track
+Data Analytics
+Internship
+Oasis Infobyte
+Task
+Task 3 – Cleaning Data
+
+### Important: how to get the exact results
+
+Run this **one final cell** in your notebook:
+
+```python
+print("========== FINAL TASK 3 RESULTS ==========")
+
+print("Original rows:", before_rows)
+print("Final rows:", after_rows)
+
+print("Original columns:", df.shape[1])
+
+print("Duplicates before:", before_duplicates)
+print("Duplicates after:", after_duplicates)
+print("Duplicates removed:", before_duplicates - after_duplicates)
+
+print("Missing values before:", before_nulls)
+print("Missing values after:", after_nulls)
+
+print("Fare outliers detected:", len(fare_outliers))
+print("Fare lower bound:", lower)
+print("Fare upper bound:", upper)
+
+print("Final dataset shape:", df.shape)
