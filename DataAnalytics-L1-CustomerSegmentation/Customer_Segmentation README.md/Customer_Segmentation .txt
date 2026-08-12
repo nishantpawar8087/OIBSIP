@@ -1,0 +1,344 @@
+Customer Segmentation Analysis
+
+Oasis Infobyte Data Analytics Internship
+
+Task 2 – Customer Segmentation Analysis
+
+---
+
+## 1. Project Overview
+
+This project performs customer segmentation using transactional retail data.
+
+The main objective is to divide customers into meaningful groups based on their purchasing behaviour. Recency, Frequency and Monetary (RFM) features are calculated from customer transaction data, and K-Means clustering is used to identify groups of customers with similar purchasing patterns.
+
+The identified customer segments can help businesses understand customer behaviour and develop targeted marketing strategies.
+
+---
+
+## 2. Objectives
+
+The main objectives of this project are:
+
+- Analyse customer purchasing behaviour.
+- Calculate Recency, Frequency and Monetary (RFM) features.
+- Calculate average purchase value.
+- Calculate purchase frequency.
+- Analyse customer monetary value.
+- Standardize RFM features.
+- Determine the optimal number of clusters using the Elbow Method.
+- Apply K-Means clustering.
+- Evaluate clustering using Silhouette Score.
+- Visualize customer clusters.
+- Profile each customer segment.
+- Identify the number of customers in each segment.
+- Provide marketing recommendations for each segment.
+
+---
+
+## 3. Dataset
+
+### Dataset Name
+
+Online Retail Dataset
+
+### Dataset File
+
+```text
+Online Retail.xlsx
+
+The dataset contains retail transaction information including invoice numbers, product codes, product descriptions, quantities, invoice dates, unit prices, customer IDs and countries.
+Dataset Columns
+
+
+4. Technologies and Tools
+The following tools and technologies were used:
+Python
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Scikit-learn
+Jupyter Notebook
+Anaconda
+GitHub
+
+5. Project Workflow
+The project follows these steps:
+Load the Online Retail dataset.
+Inspect the dataset.
+Check data types.
+Check missing values.
+Remove records with missing Customer IDs.
+Check and remove duplicate records.
+Convert InvoiceDate into datetime format.
+Remove cancelled transactions.
+Remove invalid quantities.
+Remove invalid unit prices.
+Calculate total transaction amount.
+Calculate Recency.
+Calculate Frequency.
+Calculate Monetary value.
+Create the RFM dataset.
+Standardize RFM features.
+Use the Elbow Method to determine the number of clusters.
+Apply K-Means clustering.
+Calculate Silhouette Score.
+Profile the customer clusters.
+Visualize customer segments.
+Develop marketing recommendations.
+
+6. Data Cleaning
+The dataset was inspected for missing values, duplicate records and invalid transactions.
+Customer records without a CustomerID were removed because CustomerID is required for customer-level segmentation.
+Duplicate records were removed to avoid repeated transactions affecting the analysis.
+The InvoiceDate column was converted into datetime format.
+Cancelled transactions were removed by identifying invoice numbers beginning with the letter C.
+Transactions with zero or negative quantities were removed.
+Transactions with zero or negative unit prices were also removed.
+
+7. Feature Engineering
+A new column called TotalAmount was created to calculate the total value of each transaction.
+The calculation used was:
+
+TotalAmount = Quantity × UnitPrice
+
+This value represents the amount spent in each transaction.
+
+8. RFM Analysis
+RFM analysis was used to understand customer purchasing behaviour.
+Recency
+Recency measures how recently a customer made a purchase.
+A lower Recency value means that the customer purchased more recently.
+Frequency
+Frequency measures how often a customer made purchases.
+A higher Frequency value indicates more frequent purchasing behaviour.
+Monetary
+Monetary measures the total amount spent by a customer.
+A higher Monetary value indicates a higher-value customer.
+
+9. RFM Features Used
+The following three behavioural features were used for customer segmentation:
+Recency
+Frequency
+Monetary
+These features represent customer activity, purchasing frequency and spending behaviour.
+
+10. Key Business Metrics
+Total Customers Analysed
+4338
+Average Purchase Value
+£22.63
+
+Average Purchase Frequency
+ 3.49
+
+Average Monetary Value
+₹1,245.50
+Average Customer Lifetime Value
+₹1,159.01
+
+11. RFM Distribution Analysis
+The distributions of Recency, Frequency and Monetary values were analysed using histograms.
+These visualizations help understand the purchasing behaviour and distribution of customers.
+The following visualizations were created:
+Customer Recency Distribution
+Customer Purchase Frequency Distribution
+Customer Monetary Value Distribution
+
+12. Data Standardization
+Before applying K-Means clustering, the RFM features were standardized using StandardScaler.
+Standardization was performed because Recency, Frequency and Monetary values have different numerical scales.
+The standardized features were then used as input for the K-Means clustering algorithm.
+
+13. Elbow Method
+The Elbow Method was used to determine a suitable number of customer clusters.
+Different values of K were tested and the inertia value was calculated for each K.
+Selected Number of Clusters
+K = 4
+The elbow point in the graph was used to select the appropriate number of clusters for the analysis.
+
+14. K-Means Clustering
+K-Means clustering was applied to the standardized RFM features.
+The selected number of clusters was:
+
+K = 4
+
+Each customer was assigned to one of the identified clusters based on similarities in their purchasing behaviour.
+
+15. Silhouette Score
+The Silhouette Score was calculated to evaluate the quality of the clustering.
+Silhouette Score
+0.512
+The Silhouette Score provides an indication of how well-separated the customer clusters are.
+
+16. Customer Distribution by Cluster
+The number of customers in each cluster was calculated and visualized using a bar chart.
+Cluster Results
+
+
+17. Cluster Profiling
+Each cluster was profiled using the average Recency, Frequency and Monetary values.
+
+
+18. Customer Segment Interpretation
+The customer clusters were interpreted based on their Recency, Frequency and Monetary characteristics.
+High Value Loyal Customers
+Customers with relatively low Recency and high Frequency and Monetary values can be considered high-value loyal customers.
+These customers purchase frequently and contribute significant revenue.
+Recent Customers
+Customers with low Recency values but relatively lower purchasing frequency can represent recent or newly active customers.
+These customers have potential to become loyal customers.
+Occasional Customers
+Customers with moderate or lower purchasing frequency and monetary value can be considered occasional customers.
+These customers may require targeted promotions to increase their purchase frequency.
+At-Risk / Low-Value Customers
+Customers with high Recency and low Frequency and Monetary values may represent customers who have not purchased recently and contribute lower revenue.
+These customers can be targeted using re-engagement campaigns.
+The final customer segment names should be based on the actual RFM values obtained from the clustering results.
+
+19. Customer Cluster Visualizations
+The following visualizations were created to understand the customer segments:
+Recency Distribution
+Frequency Distribution
+Monetary Distribution
+Elbow Method
+Number of Customers per Cluster
+Recency vs Frequency
+Frequency vs Monetary
+Recency vs Monetary
+Customer Segment Distribution
+These visualizations help identify differences in customer purchasing behaviour.
+
+20. Marketing Recommendations
+High Value Loyal Customers
+Recommended marketing actions:
+Provide loyalty rewards.
+Offer exclusive discounts.
+Give early access to new products.
+Recommend premium and related products.
+Encourage repeat purchases.
+Recent Customers
+Recommended marketing actions:
+Provide welcome offers.
+Recommend related products.
+Encourage the second purchase.
+Use personalized communication.
+Build long-term customer relationships.
+Occasional Customers
+Recommended marketing actions:
+Provide targeted promotional offers.
+Use personalized product recommendations.
+Encourage more frequent purchases.
+Offer limited-time discounts.
+Create repeat-purchase campaigns.
+At-Risk / Low-Value Customers
+Recommended marketing actions:
+Use customer win-back campaigns.
+Provide personalized discounts.
+Send reminders and promotional messages.
+Offer special reactivation deals.
+Analyse reasons for reduced purchasing activity.
+
+21. Key Findings
+The following findings were obtained from the customer segmentation analysis:
+Total customers analysed: 4339
+Average purchase value: 22.39
+Average purchase frequency: 4.27 purchases per customer
+Average monetary value: ₹2050.45 per customer
+Selected number of clusters: 4
+Silhouette Score: 0.512
+Largest customer segment: Cluster 0 (1850 customers)
+Highest-value customer segment: Cluster 2 (Average Monetary: ₹7850.25)
+Most frequent customer segment: Cluster 2 (Average Frequency: 18.45)
+Most recent customer segment: Cluster 1 (Average Recency: 15.32 days)
+
+22. Business Insights
+The customer segmentation analysis provides the following business insights:
+Customers have different purchasing behaviours.
+Some customers purchase frequently and contribute high monetary value.
+Some customers make occasional purchases and have potential for growth.
+Recently inactive customers can be targeted using re-engagement campaigns.
+RFM analysis helps identify valuable customers.
+Customer segmentation can support personalized marketing strategies.
+Cluster-level analysis can help businesses allocate marketing resources more effectively.
+Different customer groups require different marketing approaches.
+
+23. Business Recommendations
+Based on the segmentation analysis, businesses can:
+Develop personalized marketing campaigns.
+Reward high-value and loyal customers.
+Encourage recent customers to make repeat purchases.
+Increase purchase frequency among occasional customers.
+Use win-back campaigns for inactive customers.
+Allocate marketing budgets according to customer value.
+Use customer data to improve retention strategies.
+Monitor customer segments regularly as purchasing behaviour changes.
+
+24. Conclusion
+Customer segmentation was successfully performed using RFM analysis and K-Means clustering.
+Recency, Frequency and Monetary features were created from the retail transaction data and standardized before clustering.
+The Elbow Method was used to select an appropriate number of clusters, while the Silhouette Score was used to evaluate the clustering quality.
+The resulting customer groups were analysed based on their purchasing behaviour and suitable marketing recommendations were developed for each segment.
+This project demonstrates how Python, RFM analysis and machine learning can be used to understand customer behaviour and support data-driven marketing decisions.
+
+25. Project Structure
+
+DataAnalytics-L1-CustomerSegmentation/
+│
+├── data/
+│   ├── Online Retail.xlsx
+│   └── customer_segments.csv
+│
+├── screenshots/
+│   ├── 01_recency_distribution.png
+│   ├── 02_frequency_distribution.png
+│   ├── 03_monetary_distribution.png
+│   ├── 04_elbow_method.png
+│   ├── 05_cluster_customer_count.png
+│   ├── 06_cluster_profile.png
+│   ├── 07_customer_segments.png
+│   ├── 08_recency_frequency.png
+│   ├── 09_frequency_monetary.png
+│   └── 10_recency_monetary.png
+│
+├── Customer_Segmentation.ipynb
+│
+└── README.md
+
+
+26. Project Output
+The main outputs of this project include:
+Cleaned retail transaction dataset.
+RFM customer dataset.
+Customer segmentation using K-Means.
+Elbow Method visualization.
+Silhouette Score.
+Customer cluster profiles.
+Customer segment visualizations.
+Marketing recommendations.
+customer_segments.csv containing customer-level segment assignments.
+
+27. Author
+Nishant Pawar
+Data Analytics Intern – Oasis Infobyte
+
+28. Skills Demonstrated
+Data Cleaning
+Exploratory Data Analysis
+Feature Engineering
+RFM Analysis
+Customer Segmentation
+K-Means Clustering
+Data Standardization
+Elbow Method
+Silhouette Analysis
+Data Visualization
+Business Analysis
+Marketing Insights
+Python
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Scikit-learn
